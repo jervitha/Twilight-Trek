@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpRadius;
     [SerializeField] private Transform groundCheckPos;
     private bool canDoubleJump;
+    Animator anim;
     bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,8 +46,16 @@ public class PlayerController : MonoBehaviour
             Jump();
             canDoubleJump=false;
         }
+        if(xInput!=0)
+        {
+            anim.SetBool("isWalking", true);
 
-
+        }
+        else
+        {
+            anim.SetBool("isWalking",false);
+        }
+        anim.SetBool("hasJump", !isGrounded);
     }
     void Flip()
     {
