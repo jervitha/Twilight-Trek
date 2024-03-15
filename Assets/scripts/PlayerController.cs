@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float jumpRadius;
     [SerializeField] private Transform groundCheckPos;
+    private bool canDoubleJump;
     bool isGrounded;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,14 @@ public class PlayerController : MonoBehaviour
         }
         if(isGrounded && Input.GetKeyDown(KeyCode.Space))
         { 
-            rb.velocity = Vector2.up * jumpForce;
+            Jump();
+            canDoubleJump=true;
+
+        }
+        else if(canDoubleJump==true)
+        {
+            Jump();
+            canDoubleJump=false;
         }
 
 
@@ -44,5 +52,10 @@ public class PlayerController : MonoBehaviour
         isFacingLeft = !isFacingLeft;
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
 
+    }
+    void Jump()
+    {
+       
+    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 }
