@@ -18,6 +18,10 @@ public class LifeController : MonoBehaviour
     void Start()
     {
         player = playerGameObject?.GetComponent<PlayerController>();
+        if (UIController.instance != null)
+        {
+            UIController.instance.UpdateLivesDisplay(currentLives);
+        }
     }
 
     // Update is called once per frame
@@ -37,8 +41,12 @@ public class LifeController : MonoBehaviour
         else
         {
             currentLives = 0;
+            UIController.instance.ShowGameOver();
         }
-        UIController.instance.UpdateLivesDisplay(currentLives);
+        if (UIController.instance != null)
+        {
+            UIController.instance.UpdateLivesDisplay(currentLives);
+        }
 
     }
 }

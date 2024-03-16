@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
     [SerializeField] private Image[] heartIcons;
     [SerializeField] private TMP_Text livesText;
+    [SerializeField] private GameObject gameoverScreen;
  
     private void Awake()
     {
@@ -40,5 +42,14 @@ public class UIController : MonoBehaviour
     public void UpdateLivesDisplay(int currentLives)
     {
         livesText.text = currentLives.ToString();
+    }
+
+    public void ShowGameOver()
+    {
+        gameoverScreen.SetActive(true);
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
