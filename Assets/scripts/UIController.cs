@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image[] heartIcons;
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private GameObject gameoverScreen;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private string mainMenuScene;
  
     private void Awake()
     {
@@ -24,7 +26,10 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseunPause();
+        }
     }
 
     public void HealthDisplay(int health)
@@ -51,5 +56,29 @@ public class UIController : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+
     }
+    public void PauseunPause()
+    {
+        if(pauseScreen.activeSelf==false)
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
+        Time.timeScale = 1f;
+
+    }
+
+   
 }
