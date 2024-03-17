@@ -9,6 +9,7 @@ public class LifeController : MonoBehaviour
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private Transform startingPoint;
     [SerializeField] private int currentLives=3;
+  
 
 
     private void Awake()
@@ -32,6 +33,7 @@ public class LifeController : MonoBehaviour
     public void Respawn()
     {
         player.transform.position = startingPoint.position;
+      
         player.gameObject.SetActive(true);
         currentLives--;
         if(currentLives>0)
@@ -47,6 +49,14 @@ public class LifeController : MonoBehaviour
         {
             UIController.instance.UpdateLivesDisplay(currentLives);
         }
+        
+    }
 
+    public void UpdateDisplay()
+    {
+        if (UIController.instance != null)
+        {
+            UIController.instance.UpdateLivesDisplay(currentLives);
+        }
     }
 }
