@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void HealthDisplay(int health)
+    public void HealthDisplay(int health,int maxHealth)
     {
         for(int i=0;i<heartIcons.Length;i++)
         {
@@ -79,6 +79,11 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
-   
+
+
 }
