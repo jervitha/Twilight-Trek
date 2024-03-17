@@ -18,7 +18,7 @@ public class PlayerHealthController : MonoBehaviour
         thePlayer = GetComponent<PlayerController>();
         
         currentHealth = maxHealth;
-        UIController.instance.HealthDisplay(currentHealth);
+        UIController.instance.HealthDisplay(currentHealth, maxHealth);
     }
 
    
@@ -29,8 +29,9 @@ public class PlayerHealthController : MonoBehaviour
         {
             currentHealth = 0;
             LifeController.instance.Respawn();
+            
         }
-        UIController.instance.HealthDisplay(currentHealth);
+        UIController.instance.HealthDisplay(currentHealth,maxHealth);
     }
 
     public void AddHealth(int amountToAdd)
@@ -40,6 +41,6 @@ public class PlayerHealthController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        UIController.instance.HealthDisplay(currentHealth);
+        UIController.instance.HealthDisplay(currentHealth,maxHealth);
     }
 }

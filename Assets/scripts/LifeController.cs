@@ -9,6 +9,7 @@ public class LifeController : MonoBehaviour
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private Transform startingPoint;
     [SerializeField] private int currentLives=3;
+    [SerializeField] private int maxHealth = 5;
   
 
 
@@ -38,7 +39,8 @@ public class LifeController : MonoBehaviour
         currentLives--;
         if(currentLives>0)
         {
-            player.transform.position = startingPoint.position;
+            player.gameObject.SetActive(true);
+            PlayerHealthController.instance.AddHealth(maxHealth);
         }
         else
         {
@@ -47,10 +49,13 @@ public class LifeController : MonoBehaviour
         }
         if (UIController.instance != null)
         {
+           
             UIController.instance.UpdateLivesDisplay(currentLives);
         }
         
     }
+
+    
 
     public void UpdateDisplay()
     {
