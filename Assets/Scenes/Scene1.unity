@@ -18936,8 +18936,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &4342253986374193550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19068,7 +19066,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 200369537194061119, guid: 3ab26808b6db2425285cd57dc0ae7f25, type: 3}
   m_PrefabInstance: {fileID: 4342253986374193550}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
