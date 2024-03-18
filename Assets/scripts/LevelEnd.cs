@@ -29,6 +29,6 @@ public class LevelEnd : MonoBehaviour
     {
         yield return new WaitForSeconds(waitToEnd);
         SceneManager.LoadScene(gameWin);
-        SoundManager.Instance.PlaySound(Sounds.GameWin);
+      
     }
 }
