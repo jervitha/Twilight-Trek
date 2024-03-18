@@ -18,12 +18,7 @@ public class UIController : MonoBehaviour
     {
         instance = this;
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -52,6 +47,7 @@ public class UIController : MonoBehaviour
     public void ShowGameOver()
     {
         gameoverScreen.SetActive(true);
+        SoundManager.Instance.PlaySound(Sounds.GameOver);
     }
     public void Restart()
     {
@@ -75,6 +71,7 @@ public class UIController : MonoBehaviour
 
     public void MainMenu()
     {
+        SoundManager.Instance.PlaySound(Sounds.PlayButtonClick);
         SceneManager.LoadScene(mainMenuScene);
         Time.timeScale = 1f;
 
