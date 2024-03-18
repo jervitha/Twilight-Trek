@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform clampMin, clampMax;
     private float halfWidth, halfHeight;
     [SerializeField] private Camera theCam;
-    // Start is called before the first frame update
+   
     void Start()
     {
         positionStore = transform.position;
@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         transform.position = new Vector3(target.position.x,target.position.y, transform.position.z);

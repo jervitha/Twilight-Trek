@@ -16394,6 +16394,7 @@ MonoBehaviour:
   playerGameObject: {fileID: 350521788}
   startingPoint: {fileID: 270494989}
   currentLives: 3
+  maxHealth: 5
 --- !u!4 &270494989
 Transform:
   m_ObjectHideFlags: 0
@@ -16485,8 +16486,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 36.980003
-  m_PointLightOuterAngle: 42.04
+  m_PointLightInnerAngle: 89.600006
+  m_PointLightOuterAngle: 94.66
   m_PointLightInnerRadius: 11.15431
   m_PointLightOuterRadius: 11.157778
   m_ShapeLightParametricSides: 5
