@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    private bool isEnding;
+    
     [SerializeField]private float waitToEnd=3f;
     [SerializeField] private string gameWin;
     [SerializeField] private GameObject playerGameObject;
+
     private PlayerController thePlayer;
+    private bool isEnding;
 
     private void Start()
     {
@@ -21,14 +23,13 @@ public class LevelEnd : MonoBehaviour
         if(isEnding==false)
         {
             isEnding = true;
-            StartCoroutine(EndLevelCo());
+            Invoke(nameof(EndLevelCo), waitToEnd);
 
         }
     }
-    IEnumerator EndLevelCo()
-    {
-        yield return new WaitForSeconds(waitToEnd);
-        SceneManager.LoadScene(gameWin);
 
+    private void EndLevelCo()
+    {
+        SceneManager.LoadScene(gameWin);
     }
 }

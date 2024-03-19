@@ -6,18 +6,17 @@ public class LifeController : MonoBehaviour
 {
     public static LifeController instance;
     private PlayerController player;
+
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private Transform startingPoint;
     [SerializeField] private int currentLives=3;
     [SerializeField] private int maxHealth = 5;
-  
-
 
     private void Awake()
     {
         instance = this;
     }
-    void Start()
+    private void Start()
     {
         player = playerGameObject?.GetComponent<PlayerController>();
         if (UIController.instance != null)
@@ -26,12 +25,7 @@ public class LifeController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void Respawn()
+   public void Respawn()
     {
         player.transform.position = startingPoint.position;
       
@@ -55,9 +49,7 @@ public class LifeController : MonoBehaviour
         
     }
 
-    
-
-    public void UpdateDisplay()
+    private void UpdateDisplay()
     {
         if (UIController.instance != null)
         {

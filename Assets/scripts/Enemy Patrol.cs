@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public Transform[] PatrolPoints;
-    private int currentPoint;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float timeAtPoints;
     private float waitCounter;
-   
-   
-    void Start()
+    private int currentPoint;
+    public Transform[] PatrolPoints;
+
+    private void Start()
     {
         foreach (Transform t in PatrolPoints)
         {
@@ -19,10 +18,9 @@ public class EnemyPatrol : MonoBehaviour
         }
         waitCounter = timeAtPoints;
        
-      
     }
 
-    void Update()
+   private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, PatrolPoints[currentPoint].position, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, PatrolPoints[currentPoint].position) < 0.001f)

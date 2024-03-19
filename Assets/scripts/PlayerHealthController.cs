@@ -6,6 +6,7 @@ public class PlayerHealthController : MonoBehaviour
 {
     public static PlayerHealthController instance;
     [SerializeField] private int currentHealth, maxHealth;
+
     private PlayerController thePlayer;
 
     private void Awake()
@@ -13,7 +14,7 @@ public class PlayerHealthController : MonoBehaviour
         instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         thePlayer = GetComponent<PlayerController>();
         
@@ -21,7 +22,6 @@ public class PlayerHealthController : MonoBehaviour
         UIController.instance.HealthDisplay(currentHealth, maxHealth);
     }
 
-   
     public void DamagePlayer()
     {
         currentHealth--;

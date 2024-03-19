@@ -11,7 +11,6 @@ public class HealthPickup : MonoBehaviour
         {
                 PlayerHealthController.instance.AddHealth(healthToAdd);
                 Destroy(gameObject);
-            
         }
     }
 }

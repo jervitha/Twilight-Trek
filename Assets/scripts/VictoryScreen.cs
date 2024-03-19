@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class VictoryScreen : MonoBehaviour
 {
     [SerializeField] private string mainMenu;
+
     public void MainMenu()
     {
-        SoundManager.Instance.PlaySound(Sounds.PlayButtonClick);
+      
         SceneManager.LoadScene(mainMenu);
     }
 
