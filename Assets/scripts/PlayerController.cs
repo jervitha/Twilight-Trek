@@ -4,66 +4,69 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private bool isFacingLeft;
+    private bool canDoubleJump;
+    private Animator anim;
+    private bool isGrounded;
+
     [SerializeField] private float speed;
-    bool isFacingLeft;
     [SerializeField] private float jumpForce;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float jumpRadius;
     [SerializeField] private Transform groundCheckPos;
-    private bool canDoubleJump;
-    Animator anim;
-    bool isGrounded;
-    // Start is called before the first frame update
-    void Start()
+    
+   private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim=GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+   private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,jumpRadius,whatIsGround);
-        float xInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(xInput * speed, rb.velocity.y);
-        if(xInput>0 && isFacingLeft==true)
+        if (Time.timeScale > 0f)
         {
-            Flip();
-        }
-        if(xInput<0 &&isFacingLeft==false)
-        {
-            Flip();
-        }
-        if(isGrounded && Input.GetKeyDown(KeyCode.Space))
-        { 
-            Jump();
-            canDoubleJump=true;
+            isGrounded = Physics2D.OverlapCircle(groundCheckPos.position, jumpRadius, whatIsGround);
+            float xInput = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(xInput * speed, rb.velocity.y);
+            if (xInput > 0 && isFacingLeft == true)
+            {
+                Flip();
+            }
+            if (xInput < 0 && isFacingLeft == false)
+            {
+                Flip();
+            }
+            if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+                canDoubleJump = true;
 
-        }
-        else if(canDoubleJump==true)
-        {
-            Jump();
-            canDoubleJump=false;
-        }
-        if(xInput!=0)
-        {
-            anim.SetBool("isWalking", true);
+            }
+            else if (canDoubleJump == true)
+            {
+                Jump();
+                canDoubleJump = false;
+            }
+            if (xInput != 0)
+            {
+                anim.SetBool(NewClass.IS_WALKING, true);
 
+            }
+            else
+            {
+                anim.SetBool(NewClass.IS_WALKING, false);
+            }
+            anim.SetBool(NewClass.IS_JUMPING, !isGrounded);
         }
-        else
-        {
-            anim.SetBool("isWalking",false);
-        }
-        anim.SetBool("hasJump", !isGrounded);
     }
-    void Flip()
+   private void Flip()
     {
         isFacingLeft = !isFacingLeft;
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-
     }
-    void Jump()
+
+    private void Jump()
     {
        
     rb.velocity = new Vector2(rb.velocity.x, jumpForce);

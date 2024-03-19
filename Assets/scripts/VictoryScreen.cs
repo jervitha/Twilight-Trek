@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class VictoryScreen : MonoBehaviour
 {
     [SerializeField] private string mainMenu;
+
     public void MainMenu()
     {
       

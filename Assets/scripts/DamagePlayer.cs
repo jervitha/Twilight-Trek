@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
 {
-    private PlayerHealthController playerHealthController;
- 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-         PlayerController otherController = other.gameObject.GetComponent<PlayerController>();
+        PlayerController otherController = other.gameObject.GetComponent<PlayerController>();
 
             if (otherController != null)
             {
